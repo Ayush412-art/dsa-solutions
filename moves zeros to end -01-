@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void moveZerosToEnd(vector<int> v){
+    if(v.empty()){
+        cout<<"please give me a valid vector"<<endl;
+    }
+    vector<int>temp;
+    for(int i = 0 ; i < v.size() ; i ++){
+        if(v[i] != 0){
+            temp.push_back(v[i]);
+        }
+    }
+  
+      int newsize = v.size() - temp.size();
+    for(int i= 0 ; i < temp.size() ; i++){
+        v[i] = temp[i];
+    }  
+  
+  for(int i =0 ;i < newsize ; i++){
+     v[temp.size() + i] = 0;
+  }
+
+        for(int i= 0 ; i< v.size() ; i++){
+      cout<<" "<<v[i];
+  }
+}
+
+int main() {
+    // Write C++ code here
+    vector<int> v = {1,2,3,4,5};
+    
+    moveZerosToEnd(v);
+
+    return 0;
+}
