@@ -1,0 +1,40 @@
+//binary search
+#include <iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+bool BinarySearch(vector<int>v , int target){
+    sort(v.begin() , v.end());
+    int size = v.size();
+    int s = 0;
+    int e = size - 1;
+    int   mid = s +(e-s)/2;
+    while(s <= e){
+        if(v[mid] == target) {return true;}
+        
+        
+       else if(v[mid] > target)
+       {
+            e = mid -1;
+            
+        }
+        else
+        {
+            s = mid + 1;
+        }
+        
+        mid = s +(e-s)/2;
+    }
+    return false;
+}
+
+
+int main() {
+  vector<int> v = {2,5,4,6,1,7,3};
+  int target = 5;
+  cout<<BinarySearch(v, target);
+    
+    
+
+    return 0;
+}
