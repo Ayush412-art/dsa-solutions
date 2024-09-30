@@ -1,0 +1,38 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include<bits/stdc++.h>
+using namespace std;
+int OrderFunc(int num){
+    int cnt = 0;
+    while(num){
+    num = num / 10;
+        cnt++;
+    }
+    return cnt;
+}
+bool CheckPlusPerfect(int num){
+    int n = OrderFunc(num);
+    int r , sqSum = 0,temp = num;
+    while(temp){
+        r = temp%10;
+        sqSum += pow(r,n);
+        temp = temp/10;
+    }
+
+    if(sqSum == num) return true;
+    return false;
+}
+int main()
+{
+  int num;
+  cin >> num;
+  
+  cout<<CheckPlusPerfect(num);
+  
+}
