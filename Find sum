@@ -1,0 +1,42 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include<bits/stdc++.h>
+using namespace std;
+int ExactSum(int arr[] , int n , int sum){
+    sort(arr , arr +  n);
+    int s = 0 , e = n-1 ,cnt = 0 ;
+    
+    while(s < e){
+        if(arr[s] + arr[e] == sum){
+            cnt++;
+            s++;
+            e--;
+        }
+        else if (arr[s] + arr[e] < sum){
+            s++;
+        }
+        else
+        e--;
+    }
+    return cnt;
+}
+int main()
+{
+  int sum , n;
+  cin>>sum>>n;
+  int *arr = new int[n];
+  
+  for(int i = 0 ; i<n; i++){
+      cin>>arr[i];
+  }
+  cout<<"Result: "<<ExactSum(arr , n , sum);
+  
+  delete []arr;
+    return 0;
+}
