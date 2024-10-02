@@ -1,0 +1,40 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+void SelectionSort(vector<int>&arr){
+    
+    for(int i =0 ;i< arr.size() - 1 ; i++){
+        int minIndex = i;
+        for(int j = i+1 ; j < arr.size() ; j++){
+            if(arr[j] < arr[minIndex]){
+                minIndex = j;
+            }
+        }
+            // swap(arr[i] , arr[minIndex]);
+            if(minIndex != i) { // Only swap if a new minimum was found
+            arr[i] = arr[i] + arr[minIndex];     // Step 1: Sum
+            arr[minIndex] = arr[i] - arr[minIndex]; // Step 2: Assign original arr[i]
+            arr[i] = arr[i] - arr[minIndex];     // Step 3: Assign original arr[minIndex]
+        }
+    }
+}
+int main()
+{
+    vector<int>arr{5,4,3,2,1,8,0};
+    SelectionSort(arr);
+    
+    for(int i = 0 ; i < arr.size() ; i++){
+        cout<<arr[i]<<" ";
+    }
+
+    return 0;
+}
