@@ -1,0 +1,28 @@
+// Online C++ compiler to run C++ program online
+//to convert a lowercase char into upper case subtract 32 with in it
+// to convert an upppercase letter into lower case add 32 with in it 
+#include <iostream>
+using namespace std;
+void convertChar(string &str){
+    for(int i = 0 ; i < str.size() ; i++){
+        if(str[i] > 'a' && str[i] < 'z' ){
+            str[i] -= 32;
+        }
+      else if(str[i] > 'A'  && str[i] < 'Z'){
+          str[i] += 32;
+      }
+      else{
+           
+      }
+    }
+}
+
+int main() {
+ string str = "IntErVIew PrEp";
+ cout<<"Input: "<<str<<endl;
+    convertChar(str);
+    cout<<"Output: "<<str;
+
+
+    return 0;
+}
