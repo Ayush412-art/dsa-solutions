@@ -1,0 +1,35 @@
+// greedy algorithm -- n train problem
+#include <iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+bool cmp(pair<int,int>a,pair<int,int>b){
+    return (b.second > a.second);
+}
+int solve(int arr[] , int dept[] ,int n){
+    vector<pair<int,int>> pairs;
+for(int i = 0 ; i <n ; i++ ){
+    pairs.push_back({arr[i] , dept[i]});
+}
+sort(pairs.begin() , pairs.end() , cmp);
+
+int cnt = 1;
+int lastdept = pairs[0].second;
+cout<<"{"<<pairs[0].first<<", "<<pairs[0].second<<"}"<<endl;
+for(int j = 1 ; j < n ; j++){
+    if(pairs[j].first >= lastdept){
+        cnt++;
+        lastdept = pairs[j].second;
+        cout<<"{"<<pairs[j].first<<", "<<pairs[j].second<<"}"<<endl;
+    }
+}
+return cnt;
+}
+
+int main() {
+int arrival[] = {5,8,2,4};
+int dept[] = {7,11,6,8};
+
+cout<< solve(arrival , dept ,4);
+    return 0;
+}
