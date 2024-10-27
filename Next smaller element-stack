@@ -1,0 +1,31 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include<vector>
+#include<stack>
+using namespace std;
+void nextGreaterElement(vector<int>&v){
+  vector<int>ans(v.size());
+  stack<int>st;
+  st.push(-1);
+  
+  for(int i = v.size() - 1 ; i >= 0  ; i-- ){
+          while(v[i] <= st.top()){
+              st.pop();
+          }
+            ans[i] = st.top();
+          st.push(v[i]);
+       
+      
+  }
+  
+for(int i = 0 ; i < v.size() ; i++){
+    cout<<ans[i]<<" ";
+}
+}
+int main() {
+  vector<int>v ={2,1,4,3};
+  
+  nextGreaterElement(v);
+  
+    return 0;
+}
