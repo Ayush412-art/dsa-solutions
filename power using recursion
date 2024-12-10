@@ -1,0 +1,27 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+void cal_power(int x , int n , long long &ans , long long mod){
+    if(n == 0){
+        return ;
+    }
+    if(n%2 == 0){
+        x = (x * x) % mod;  // using modulo operator!!
+         cal_power(x , n/2 ,ans , mod);
+    }
+    else{
+        ans = (ans * x + mod) % mod;
+          cal_power(x , n - 1 ,ans , mod);
+    }
+  
+    
+}
+int main() {
+    int x = 2 , n = 25;
+    long long ans = 1;
+    long long mod = 1e9 + 7;
+    
+  cal_power( x ,  n , ans ,mod);
+  cout<<ans;
+    return 0;
+}
