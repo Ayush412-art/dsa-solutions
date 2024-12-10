@@ -1,0 +1,28 @@
+//optimal approach --- [DP]
+class Solution {
+public:
+void parHandler(vector<string> &ans , int n,int ob , int cb , string str){
+    //base case 
+    if(ob == n && cb == n){
+        ans.push_back(str);
+        return;
+    }
+    if(ob < n){
+      
+        parHandler(ans ,n,  ob + 1 , cb , str + '('  );
+    }
+
+    if(cb < ob){
+      
+        parHandler(ans ,n , ob , cb + 1 ,str + ')' );
+    }
+}
+
+    vector<string> generateParenthesis(int n) {
+        vector<string>ans;
+        int ob = 0 , cb = 0 ;
+ 
+        parHandler(ans , n , ob , cb , "");
+        return ans;
+    }
+};
