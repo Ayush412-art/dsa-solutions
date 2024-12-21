@@ -1,0 +1,82 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include<queue>
+#include<map>
+using namespace std;
+class TreeNode {
+    public :
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int data){
+        this->data = data;
+        this->left = NULL;
+        this->right = NULL;
+    }
+    void printTree(TreeNode* );
+    
+};
+TreeNode* BuildNode(int data)
+{
+    if(data == -1)
+    {
+        return NULL;
+    }
+    
+    TreeNode* root = new TreeNode(data);
+    //creating left node
+    int leftData;
+    cout<<"Enter the data for left node : "<<endl;
+    cin >> leftData;
+   root->left = BuildNode(leftData);
+   //creating right node
+   int rightData;
+   cout<<"Enter the data for right node : "<<endl;
+   cin >> rightData;
+   root->right = BuildNode(rightData);
+   
+   return root;
+   
+}
+void BottomView(TreeNode* root){
+    if(!root){
+        return ;
+    }
+    map<int , int > m;
+    
+    queue<pair<TreeNode* , int> > q;
+    q.push(make_pair(root , 0));
+    
+    while(!q.empty()){
+       auto temp = q.front();
+        q.pop();
+        TreeNode* currNode = temp.first;
+        int hd = temp.second;
+        //storing values in map
+        m[hd] = currNode->data;
+        
+        //left calling 
+        if(currNode -> left){
+        q.push(make_pair(currNode->left , hd - 1));
+        }
+        //right calling
+        if(currNode -> right) {
+        q.push(make_pair(currNode->right , hd + 1));
+        }
+        
+        
+    }
+    
+    for(auto i : m){
+        cout <<" "<< i.second;
+    }
+}
+
+
+int main() {
+    TreeNode* root;
+    int TreeData = 20;
+    root = BuildNode(TreeData);
+    BottomView(root);
+    return 0;
+}
