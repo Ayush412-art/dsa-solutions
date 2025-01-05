@@ -1,0 +1,21 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+void isEvenOrodd(int num){
+    if(num&1){
+     cout<<"num is odd"<<endl;   
+    }
+    else{
+        cout<<"num is even";
+    }
+  
+}
+
+int main() {
+    int n;
+   cout << "Enter number :"<<endl;
+   cin >> n;
+    isEvenOrodd(n);
+    return 0;
+}
