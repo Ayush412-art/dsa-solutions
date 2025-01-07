@@ -1,0 +1,29 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+int countSetbits(int num ){
+    int cnt = 0;
+    while(num){
+        if(num & 1){
+            cnt ++;
+        }
+        num = num>>1;
+    }
+    return cnt;
+}
+void clearBitsinRange(int n , int i , int j){
+    int mask1 = (1<<j) - 1 ;
+    int mask2 = (-1 << (i + 1));
+    int net_mask = (mask1 | mask2);
+    
+    cout << (n & net_mask);
+}
+int main() {
+    int num = 7;
+    
+    // int ans = countSetbits(num);
+    // cout<<ans;
+    clearBitsinRange(15 , 3 ,0);
+
+    return 0; // time complexity = O(logn)
+}
